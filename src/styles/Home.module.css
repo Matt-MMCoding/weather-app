@@ -28,6 +28,22 @@
     justify-content: space-between;
 }
 
+.search_container {
+    display: flex;
+    align-items: center;
+}
+
+.search_icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.search_input {
+    width: 0;
+    border: none;
+}
+
 .weather_type_container {
     text-align: center;
 }
@@ -58,8 +74,14 @@
     display: flex;
 }
 
-.weather_detail {
+.weather_detail_wrapper {
     flex: 1;
+}
+
+.weather_detail {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .temperature {

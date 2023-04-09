@@ -3,6 +3,10 @@ import Image from 'next/image';
 import { Lato } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 
+// Icons
+import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
+import { BiSearchAlt } from 'react-icons/bi';
+
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
@@ -30,7 +34,11 @@ export default function Home() {
               <p>Nottingham</p>
             </div>
             <div className={styles.search_container}>
+              <button className={styles.search_icon}>
+                <BiSearchAlt />
+              </button>
               <input
+                className={styles.search_input}
                 type="text"
                 placeholder="search"
               />
@@ -64,10 +72,19 @@ export default function Home() {
             </ul>
           </div>
           <div className={styles.weather_info_container}>
-            <div className={styles.weather_detail}>
-              <p>21 m/s</p>
-              <p>13%</p>
-              <p>4%</p>
+            <div className={styles.weather_detail_wrapper}>
+              <div className={styles.weather_detail}>
+                <BsWind />
+                <p>21 m/s</p>
+              </div>
+              <div className={styles.weather_detail}>
+                <BsDropletHalf />
+                <p>13%</p>
+              </div>
+              <div className={styles.weather_detail}>
+                <BsClouds />
+                <p>4%</p>
+              </div>
             </div>
             <div className={styles.temperature}>22</div>
           </div>
