@@ -23,7 +23,33 @@ export default function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <main className={`${styles.main} ${lato.className}`}></main>
+      <main className={`${styles.main} ${lato.className}`}>
+        <div className={styles.container}>
+          <div className={styles.top_bar}>
+            <div className={styles.location}>
+              <p>Nottingham</p>
+            </div>
+            <div className={styles.search_container}>
+              <input
+                type="text"
+                placeholder="search"
+              />
+            </div>
+          </div>
+          <div className={styles.weather_type_container}>
+            <p>Icon here</p>
+            <p>Sunny</p>
+          </div>
+          <div className={styles.weather_info_container}>
+            <div className={styles.weather_detail}>
+              <p>21 m/s</p>
+              <p>13%</p>
+              <p>4%</p>
+            </div>
+            <div className={styles.temperature}>22</div>
+          </div>
+        </div>
+      </main>
     </>
   );
 }
