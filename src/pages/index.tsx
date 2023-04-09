@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Lato } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
+import { useRef } from 'react';
 
 // Icons
 import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
@@ -10,6 +11,12 @@ import { BiSearchAlt } from 'react-icons/bi';
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchIconClick = () => {
+    searchInputRef.current?.focus();
+  };
+
   return (
     <>
       <Head>
@@ -34,14 +41,18 @@ export default function Home() {
               <p>Nottingham</p>
             </div>
             <div className={styles.search_container}>
-              <button className={styles.search_icon}>
-                <BiSearchAlt />
-              </button>
               <input
                 className={styles.search_input}
+                ref={searchInputRef}
                 type="text"
                 placeholder="search"
               />
+              <button
+                className={styles.search_icon}
+                onClick={handleSearchIconClick}
+              >
+                <BiSearchAlt size="1.5rem" />
+              </button>
             </div>
           </div>
           <div className={styles.weather_type_container}>

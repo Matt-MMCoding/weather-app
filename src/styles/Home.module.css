@@ -31,17 +31,28 @@
 .search_container {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .search_icon {
     background: transparent;
     border: none;
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .search_input {
     width: 0;
     border: none;
+    padding: 8px 0;
+}
+
+.search_input:focus {
+    width: 100%;
+    padding-left: 4px;
+    outline: none;
 }
 
 .weather_type_container {
