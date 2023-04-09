@@ -24,7 +24,7 @@ export default function Home() {
         />
       </Head>
       <main className={`${styles.main} ${lato.className}`}>
-        <div className={styles.container}>
+        <div className={styles.weather_container}>
           <div className={styles.top_bar}>
             <div className={styles.location}>
               <p>Nottingham</p>
@@ -39,6 +39,29 @@ export default function Home() {
           <div className={styles.weather_type_container}>
             <p>Icon here</p>
             <p>Sunny</p>
+            <ul className={styles.day_selection_list}>
+              <li className={`${styles.day} ${styles.day_active}`}>
+                <button>S</button>
+              </li>
+              <li className={`${styles.day}`}>
+                <button>M</button>
+              </li>
+              <li className={`${styles.day}`}>
+                <button>T</button>
+              </li>
+              <li className={`${styles.day}`}>
+                <button>W</button>
+              </li>
+              <li className={`${styles.day}`}>
+                <button>T</button>
+              </li>
+              <li className={`${styles.day}`}>
+                <button>F</button>
+              </li>
+              <li className={`${styles.day}`}>
+                <button>S</button>
+              </li>
+            </ul>
           </div>
           <div className={styles.weather_info_container}>
             <div className={styles.weather_detail}>
