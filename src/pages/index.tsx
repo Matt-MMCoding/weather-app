@@ -2,20 +2,37 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Lato } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Icons
 import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
+import { WeatherProps } from '@/types/weather.types';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
+  const [loc, setLoc] = useState({ lat: 44.34, lon: 10.99 });
+  const [currentWeather, setCurrentWeather] = useState<WeatherProps>();
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchIconClick = () => {
     searchInputRef.current?.focus();
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `/api/currentWeather?lat=${loc.lat}&lon=${loc.lon}`
+      );
+      const data = await response.json();
+      console.log(data);
+
+      setCurrentWeather(data);
+    };
+
+    fetchData();
+  }, [loc]);
 
   return (
     <>
@@ -38,7 +55,7 @@ export default function Home() {
         <div className={styles.weather_container}>
           <div className={styles.top_bar}>
             <div className={styles.location}>
-              <p>Nottingham</p>
+              <p>{currentWeather?.location}</p>
             </div>
             <div className={styles.search_container}>
               <input
@@ -57,7 +74,7 @@ export default function Home() {
           </div>
           <div className={styles.weather_type_container}>
             <p>Icon here</p>
-            <p>Sunny</p>
+            <p>{currentWeather?.weatherType}</p>
             <ul className={styles.day_selection_list}>
               <li className={`${styles.day} ${styles.day_active}`}>
                 <button>S</button>
@@ -86,18 +103,20 @@ export default function Home() {
             <div className={styles.weather_detail_wrapper}>
               <div className={styles.weather_detail}>
                 <BsWind />
-                <p>21 m/s</p>
+                <p>{currentWeather?.windSpeed}</p>
               </div>
               <div className={styles.weather_detail}>
                 <BsDropletHalf />
-                <p>13%</p>
+                <p>{currentWeather?.humidity}</p>
               </div>
               <div className={styles.weather_detail}>
                 <BsClouds />
-                <p>4%</p>
+                <p>{currentWeather?.clouds}</p>
               </div>
             </div>
-            <div className={styles.temperature}>22</div>
+            <div className={styles.temperature}>
+              {currentWeather?.currentTemp}
+            </div>
           </div>
         </div>
       </main>

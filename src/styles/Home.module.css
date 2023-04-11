@@ -47,6 +47,8 @@
     width: 0;
     border: none;
     padding: 8px 0;
+    padding-left: 4px;
+    transition: width ease-in-out 0.3s
 }
 
 .search_input:focus {
