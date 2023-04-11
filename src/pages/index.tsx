@@ -29,29 +29,10 @@ export default function Home() {
       const data = await response.json();
 
       setCurrentWeather(data);
-      console.log(data.weatherId);
     };
 
     fetchData();
   }, [loc]);
-
-  // const icons = [{ range: [801, 804], icon: BsClouds }];
-
-  // const getIcon = (number: number) => {
-  //   for (let i = 0; i < icons.length; i++) {
-  //     const { range, icon } = icons[i];
-  //     if (number >= range[0] && number <= range[1]) {
-  //       return icon;
-  //     }
-  //   }
-
-  //   return BsClouds;
-  // };
-
-  // const WeatherIcon = ({ number }) => {
-  //   const Icon = getIcon(number);
-  //   return <Icon />;
-  // };
 
   return (
     <>
