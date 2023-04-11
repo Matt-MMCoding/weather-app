@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
 import { WeatherProps } from '@/types/weather.types';
+import { WeatherIcon } from '@/components/WeatherIcon';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
@@ -26,13 +27,31 @@ export default function Home() {
         `/api/currentWeather?lat=${loc.lat}&lon=${loc.lon}`
       );
       const data = await response.json();
-      console.log(data);
 
       setCurrentWeather(data);
+      console.log(data.weatherId);
     };
 
     fetchData();
   }, [loc]);
+
+  // const icons = [{ range: [801, 804], icon: BsClouds }];
+
+  // const getIcon = (number: number) => {
+  //   for (let i = 0; i < icons.length; i++) {
+  //     const { range, icon } = icons[i];
+  //     if (number >= range[0] && number <= range[1]) {
+  //       return icon;
+  //     }
+  //   }
+
+  //   return BsClouds;
+  // };
+
+  // const WeatherIcon = ({ number }) => {
+  //   const Icon = getIcon(number);
+  //   return <Icon />;
+  // };
 
   return (
     <>
@@ -73,7 +92,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.weather_type_container}>
-            <p>Icon here</p>
+            <WeatherIcon id={currentWeather?.weatherId} />
             <p>{currentWeather?.weatherType}</p>
             <ul className={styles.day_selection_list}>
               <li className={`${styles.day} ${styles.day_active}`}>

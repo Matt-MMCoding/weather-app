@@ -44,6 +44,7 @@ export default async function handler(
     const filteredData = {
       location: data.name,
       weatherType: data.weather[0].main,
+      weatherId: data.weather[0].id,
       windSpeed: data.wind.speed,
       humidity: data.main.humidity,
       clouds: data.clouds.all,
