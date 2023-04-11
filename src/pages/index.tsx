@@ -1,18 +1,18 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Lato } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import { useEffect, useRef, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
+import { WeatherProps } from '@/types/weather.types';
+import { WeatherIcon } from '@/components/WeatherIcon';
 
 // Icons
 import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
-import { WeatherProps } from '@/types/weather.types';
-import { WeatherIcon } from '@/components/WeatherIcon';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
+  const [search, setSearch] = useState<string | undefined>('');
   const [loc, setLoc] = useState({ lat: 44.34, lon: 10.99 });
   const [currentWeather, setCurrentWeather] = useState<WeatherProps>();
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -21,18 +21,45 @@ export default function Home() {
     searchInputRef.current?.focus();
   };
 
+  const handleSearchSubmit = (e: BaseSyntheticEvent) => {
+    e.preventDefault();
+
+    setSearch(searchInputRef?.current?.value);
+  };
+
   useEffect(() => {
+    if (!loc) {
+      return;
+    }
     const fetchData = async () => {
       const response = await fetch(
         `/api/currentWeather?lat=${loc.lat}&lon=${loc.lon}`
       );
       const data = await response.json();
 
-      setCurrentWeather(data);
+      if (data) {
+        setCurrentWeather(data);
+      }
     };
 
     fetchData();
   }, [loc]);
+
+  useEffect(() => {
+    if (!search) {
+      return;
+    }
+    const fetchData = async () => {
+      const response = await fetch(`/api/geoLocation?search=${search}`);
+      const data = await response.json();
+
+      if (data) {
+        setLoc({ lat: data.lat, lon: data.lon });
+      }
+    };
+
+    fetchData();
+  }, [search]);
 
   return (
     <>
@@ -58,12 +85,16 @@ export default function Home() {
               <p>{currentWeather?.location}</p>
             </div>
             <div className={styles.search_container}>
-              <input
-                className={styles.search_input}
-                ref={searchInputRef}
-                type="text"
-                placeholder="search"
-              />
+              <form onSubmit={(e) => handleSearchSubmit(e)}>
+                <input
+                  className={styles.search_input}
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="search"
+                  // value={search}
+                  // onChange={() => setSearch(searchInputRef?.current?.value)}
+                />
+              </form>
               <button
                 className={styles.search_icon}
                 onClick={handleSearchIconClick}
