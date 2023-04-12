@@ -28,6 +28,13 @@ export default function Home() {
   };
 
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log(position.coords);
+      setLoc({ lat: position.coords.latitude, lon: position.coords.longitude });
+    });
+  }, []);
+
+  useEffect(() => {
     if (!loc) {
       return;
     }
