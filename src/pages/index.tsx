@@ -28,7 +28,7 @@ export default function Home() {
     setSearch(searchInputRef?.current?.value);
   };
 
-  const handleLocationClick = ({ lat, lon }) => {
+  const handleLocationClick = ({ lat, lon }: { lat: number; lon: number }) => {
     if (searchInputRef.current) {
       searchInputRef.current.value = '';
     }
