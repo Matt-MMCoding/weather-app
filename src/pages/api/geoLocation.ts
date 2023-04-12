@@ -22,12 +22,7 @@ export default async function handler(
 
     const data = await response.json();
 
-    const filteredData = {
-      lat: data.data[0].latitude,
-      lon: data.data[0].longitude,
-    };
-
-    res.status(200).json(filteredData);
+    res.status(200).json(data.data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
