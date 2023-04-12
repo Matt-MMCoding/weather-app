@@ -8,6 +8,7 @@ import { WeatherIcon } from '@/components/WeatherIcon';
 // Icons
 import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
+import { GeoLocationProps } from '@/types/geoLocation.types';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
@@ -15,7 +16,9 @@ export default function Home() {
   const [search, setSearch] = useState<string | undefined>('');
   const [loc, setLoc] = useState({ lat: 44.34, lon: 10.99 });
   const [currentWeather, setCurrentWeather] = useState<WeatherProps>();
-  const [searchLocations, setSearchLocations] = useState<any[]>([]);
+  const [searchLocations, setSearchLocations] = useState<GeoLocationProps[]>(
+    []
+  );
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchIconClick = () => {
