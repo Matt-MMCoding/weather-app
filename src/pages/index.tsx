@@ -15,6 +15,7 @@ export default function Home() {
   const [search, setSearch] = useState<string | undefined>('');
   const [loc, setLoc] = useState({ lat: 44.34, lon: 10.99 });
   const [currentWeather, setCurrentWeather] = useState<WeatherProps>();
+  const [searchLocations, setSearchLocations] = useState<any[]>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchIconClick = () => {
@@ -25,6 +26,15 @@ export default function Home() {
     e.preventDefault();
 
     setSearch(searchInputRef?.current?.value);
+  };
+
+  const handleLocationClick = ({ lat, lon }) => {
+    if (searchInputRef.current) {
+      searchInputRef.current.value = '';
+    }
+
+    setSearchLocations([]);
+    setLoc({ lat, lon });
   };
 
   useEffect(() => {
@@ -61,7 +71,7 @@ export default function Home() {
       const data = await response.json();
 
       if (data) {
-        setLoc({ lat: data.lat, lon: data.lon });
+        setSearchLocations(data);
       }
     };
 
@@ -87,7 +97,82 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${lato.className}`}>
         <div className={styles.weather_container}>
-          <div className={styles.top_bar}>
+          <form
+            className={styles.weather_form}
+            onSubmit={handleSearchSubmit}
+          >
+            <div className={styles.form_top_bar}>
+              <span>{currentWeather?.location}</span>
+              <input
+                type="text"
+                ref={searchInputRef}
+                placeholder="Search by City"
+              />
+            </div>
+            {searchLocations && (
+              <ul className={styles.search_return_container}>
+                {searchLocations.map((loc, idx) => {
+                  return (
+                    <li
+                      key={idx}
+                      onClick={() =>
+                        handleLocationClick({
+                          lat: loc.latitude,
+                          lon: loc.longitude,
+                        })
+                      }
+                    >
+                      {loc.name}, {loc.countryCode}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </form>
+          <div className={styles.weather_type_container}>
+            <WeatherIcon id={currentWeather?.weatherId} />
+            <span>{currentWeather?.weatherType}</span>
+          </div>
+          <div className={styles.weather_info_container}>
+            <ul className={styles.weather_info}>
+              <li>
+                <BsWind /> <span>{currentWeather?.windSpeed}</span>
+              </li>
+              <li>
+                <BsDropletHalf /> <span>{currentWeather?.humidity}</span>
+              </li>
+              <li>
+                <BsClouds /> <span>{currentWeather?.clouds}</span>
+              </li>
+            </ul>
+            <div className={styles.weather_temperature}>
+              {currentWeather?.currentTemp}
+            </div>
+          </div>
+          <ul className={styles.day_selection_list}>
+            <li className={`${styles.day} ${styles.day_active}`}>
+              <button>S</button>
+            </li>
+            <li className={`${styles.day}`}>
+              <button>M</button>
+            </li>
+            <li className={`${styles.day}`}>
+              <button>T</button>
+            </li>
+            <li className={`${styles.day}`}>
+              <button>W</button>
+            </li>
+            <li className={`${styles.day}`}>
+              <button>T</button>
+            </li>
+            <li className={`${styles.day}`}>
+              <button>F</button>
+            </li>
+            <li className={`${styles.day}`}>
+              <button>S</button>
+            </li>
+          </ul>
+          {/* <div className={styles.top_bar}>
             <div className={styles.location}>
               <p>{currentWeather?.location}</p>
             </div>
@@ -98,8 +183,6 @@ export default function Home() {
                   ref={searchInputRef}
                   type="text"
                   placeholder="search"
-                  // value={search}
-                  // onChange={() => setSearch(searchInputRef?.current?.value)}
                 />
               </form>
               <button
@@ -110,6 +193,25 @@ export default function Home() {
               </button>
             </div>
           </div>
+          {!!searchLocations && (
+            <div className={styles.search_locations}>
+              {searchLocations.map((item, idx) => {
+                return (
+                  <p
+                    key={idx}
+                    onClick={() =>
+                      setLoc({
+                        lat: item.latitude,
+                        lon: item.longitude,
+                      })
+                    }
+                  >
+                    {item.name}, {item.countryCode}
+                  </p>
+                );
+              })}
+            </div>
+          )}
           <div className={styles.weather_type_container}>
             <WeatherIcon id={currentWeather?.weatherId} />
             <p>{currentWeather?.weatherType}</p>
@@ -155,7 +257,7 @@ export default function Home() {
             <div className={styles.temperature}>
               {currentWeather?.currentTemp}
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
     </>
