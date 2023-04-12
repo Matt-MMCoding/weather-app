@@ -8,18 +8,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<WeatherProps | { error: string }>
 ) {
+  const options = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + process.env.API_KEY,
+      'Content-Type': 'application/json',
+    },
+  };
+
   try {
     const { lat, lon } = req.query;
 
     const response = await fetch(
-      `${API_URL}lat=${lat}&lon=${lon}&appid=${API_KEY}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: 'Bearer ' + process.env.API_KEY,
-          'Content-Type': 'application/json',
-        },
-      }
+      `${API_URL}lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`,
+      options
     );
 
     if (!response.ok) {
