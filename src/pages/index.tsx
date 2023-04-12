@@ -39,7 +39,6 @@ export default function Home() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position.coords);
       setLoc({ lat: position.coords.latitude, lon: position.coords.longitude });
     });
   }, []);
@@ -99,7 +98,7 @@ export default function Home() {
         <div className={styles.weather_container}>
           <form
             className={styles.weather_form}
-            onSubmit={handleSearchSubmit}
+            onSubmit={(e) => handleSearchSubmit(e)}
           >
             <div className={styles.form_top_bar}>
               <span>{currentWeather?.location}</span>
@@ -109,7 +108,7 @@ export default function Home() {
                 placeholder="Search by City"
               />
             </div>
-            {searchLocations && (
+            {!!searchLocations && (
               <ul className={styles.search_return_container}>
                 {searchLocations.map((loc, idx) => {
                   return (
@@ -136,128 +135,54 @@ export default function Home() {
           <div className={styles.weather_info_container}>
             <ul className={styles.weather_info}>
               <li>
-                <BsWind /> <span>{currentWeather?.windSpeed}</span>
+                <BsWind />{' '}
+                <span>
+                  {currentWeather?.windSpeed}
+                  <small>m/s</small>
+                </span>
               </li>
               <li>
-                <BsDropletHalf /> <span>{currentWeather?.humidity}</span>
+                <BsDropletHalf />{' '}
+                <span>
+                  {currentWeather?.humidity}
+                  <small>%</small>
+                </span>
               </li>
               <li>
-                <BsClouds /> <span>{currentWeather?.clouds}</span>
+                <BsClouds />{' '}
+                <span>
+                  {currentWeather?.clouds}
+                  <small>%</small>
+                </span>
               </li>
             </ul>
             <div className={styles.weather_temperature}>
-              {currentWeather?.currentTemp}
+              {currentWeather?.currentTemp} <pre>°C</pre>
             </div>
           </div>
           <ul className={styles.day_selection_list}>
             <li className={`${styles.day} ${styles.day_active}`}>
-              <button>S</button>
+              <button>Sun</button>
             </li>
             <li className={`${styles.day}`}>
-              <button>M</button>
+              <button>Mon</button>
             </li>
             <li className={`${styles.day}`}>
-              <button>T</button>
+              <button>Tue</button>
             </li>
             <li className={`${styles.day}`}>
-              <button>W</button>
+              <button>Wed</button>
             </li>
             <li className={`${styles.day}`}>
-              <button>T</button>
+              <button>Thur</button>
             </li>
             <li className={`${styles.day}`}>
-              <button>F</button>
+              <button>Fri</button>
             </li>
             <li className={`${styles.day}`}>
-              <button>S</button>
+              <button>Sat</button>
             </li>
           </ul>
-          {/* <div className={styles.top_bar}>
-            <div className={styles.location}>
-              <p>{currentWeather?.location}</p>
-            </div>
-            <div className={styles.search_container}>
-              <form onSubmit={(e) => handleSearchSubmit(e)}>
-                <input
-                  className={styles.search_input}
-                  ref={searchInputRef}
-                  type="text"
-                  placeholder="search"
-                />
-              </form>
-              <button
-                className={styles.search_icon}
-                onClick={handleSearchIconClick}
-              >
-                <BiSearchAlt size="1.5rem" />
-              </button>
-            </div>
-          </div>
-          {!!searchLocations && (
-            <div className={styles.search_locations}>
-              {searchLocations.map((item, idx) => {
-                return (
-                  <p
-                    key={idx}
-                    onClick={() =>
-                      setLoc({
-                        lat: item.latitude,
-                        lon: item.longitude,
-                      })
-                    }
-                  >
-                    {item.name}, {item.countryCode}
-                  </p>
-                );
-              })}
-            </div>
-          )}
-          <div className={styles.weather_type_container}>
-            <WeatherIcon id={currentWeather?.weatherId} />
-            <p>{currentWeather?.weatherType}</p>
-            <ul className={styles.day_selection_list}>
-              <li className={`${styles.day} ${styles.day_active}`}>
-                <button>S</button>
-              </li>
-              <li className={`${styles.day}`}>
-                <button>M</button>
-              </li>
-              <li className={`${styles.day}`}>
-                <button>T</button>
-              </li>
-              <li className={`${styles.day}`}>
-                <button>W</button>
-              </li>
-              <li className={`${styles.day}`}>
-                <button>T</button>
-              </li>
-              <li className={`${styles.day}`}>
-                <button>F</button>
-              </li>
-              <li className={`${styles.day}`}>
-                <button>S</button>
-              </li>
-            </ul>
-          </div>
-          <div className={styles.weather_info_container}>
-            <div className={styles.weather_detail_wrapper}>
-              <div className={styles.weather_detail}>
-                <BsWind />
-                <p>{currentWeather?.windSpeed}</p>
-              </div>
-              <div className={styles.weather_detail}>
-                <BsDropletHalf />
-                <p>{currentWeather?.humidity}</p>
-              </div>
-              <div className={styles.weather_detail}>
-                <BsClouds />
-                <p>{currentWeather?.clouds}</p>
-              </div>
-            </div>
-            <div className={styles.temperature}>
-              {currentWeather?.currentTemp}
-            </div>
-          </div> */}
         </div>
       </main>
     </>
