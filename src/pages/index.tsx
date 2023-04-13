@@ -97,7 +97,7 @@ export default function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <main className={`${styles.main} ${lato.className}`}>
+      <main className={`${styles.main}`}>
         <div className={styles.weather_container}>
           <form
             className={styles.weather_form}
