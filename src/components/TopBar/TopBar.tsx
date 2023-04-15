@@ -8,6 +8,7 @@ import {
 // Icons
 import { GoLocation } from 'react-icons/go';
 import { BiSearch } from 'react-icons/bi';
+import { Typography } from '../UI/Typography';
 
 const TopBar = () => {
   return (
@@ -19,7 +20,7 @@ const TopBar = () => {
     >
       <StyledLocationContainer>
         <GoLocation />
-        <p>Nottingham, UK</p>
+        <Typography>Nottingham, UK</Typography>
       </StyledLocationContainer>
       <StyledSearchContainer>
         <BiSearch />
