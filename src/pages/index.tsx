@@ -9,6 +9,8 @@ import { WeatherIcon } from '@/components/WeatherIcon';
 import { BsClouds, BsDropletHalf, BsWind } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
 import { GeoLocationProps } from '@/types/geoLocation.types';
+import TopBar from '@/components/TopBar/TopBar';
+import { Container } from '@/components/UI/Container';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
@@ -97,7 +99,10 @@ export default function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <main className={`${styles.main}`}>
+      <Container>
+        <TopBar />
+      </Container>
+      {/* <main className={`${styles.main}`}>
         <div className={styles.weather_container}>
           <form
             className={styles.weather_form}
@@ -187,7 +192,7 @@ export default function Home() {
             </li>
           </ul>
         </div>
-      </main>
+      </main> */}
     </>
   );
 }
