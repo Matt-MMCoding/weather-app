@@ -19,6 +19,8 @@ type ContainerCssProps = Pick<
   | 'paddingRight'
   | 'paddingBottom'
   | 'paddingLeft'
+  | 'backgroundColor'
+  | 'color'
 >;
 
 export interface IContainerProps extends PropsWithChildren<ContainerCssProps> {

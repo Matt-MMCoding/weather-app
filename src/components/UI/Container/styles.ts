@@ -18,6 +18,8 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     $paddingRight,
     $paddingBottom,
     $paddingLeft,
+    $backgroundColor,
+    $color,
   }) => css`
     width: ${$width};
     display: ${$display};
@@ -34,5 +36,7 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     padding-right: ${$paddingRight};
     padding-bottom: ${$paddingBottom};
     padding-left: ${$paddingLeft};
+    background-color: ${$backgroundColor};
+    color: ${$color};
   `}
 `;

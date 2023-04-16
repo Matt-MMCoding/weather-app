@@ -20,6 +20,8 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
       paddingRight,
       paddingBottom,
       paddingLeft,
+      backgroundColor,
+      color,
       as,
       children,
       ...rest
@@ -43,6 +45,8 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
         $paddingRight={paddingRight}
         $paddingBottom={paddingBottom}
         $paddingLeft={paddingLeft}
+        $backgroundColor={backgroundColor}
+        $color={color}
         as={as}
         ref={ref}
         {...rest}
