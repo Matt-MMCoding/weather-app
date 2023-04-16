@@ -8,9 +8,12 @@ type TypographyAlignProps = 'left' | 'right' | 'center';
 
 type TypographyTransormProps = 'none' | 'capitalize' | 'uppercase' | 'lowecase';
 
+type TypographyVariant = 'bodySmall' | 'h1';
+
 interface IBaseTypographyProps extends TypographyCssProps {
   align?: TypographyAlignProps;
   textTransform?: TypographyTransormProps;
+  variant?: TypographyVariant;
 }
 
 export interface ITypographyProps
@@ -20,6 +23,7 @@ export interface ITypographyProps
 
 export interface IStyledTypographyProps
   extends StyledTransientProps<IBaseTypographyProps> {
+  $variant: TypographyVariant;
   $align: TypographyAlignProps;
   $textTransform: TypographyTransormProps;
 }

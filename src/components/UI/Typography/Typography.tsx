@@ -8,6 +8,7 @@ const Typography = forwardRef<HTMLElement, ITypographyProps>(
       color = 'inherit',
       align = 'left',
       textTransform = 'none',
+      variant = 'bodySmall',
       as,
       children,
       ...rest
@@ -19,6 +20,7 @@ const Typography = forwardRef<HTMLElement, ITypographyProps>(
         $color={color}
         $align={align}
         $textTransform={textTransform}
+        $variant={variant}
         as={as}
         ref={ref}
         {...rest}
