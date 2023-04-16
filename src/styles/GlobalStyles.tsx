@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     }
     
     body {
-        font-size: 1.6rem;
+        font-size: ${({ theme }) => theme.typography.fontSizes.body}rem;
         font-family: ${({ theme }) => theme.typography.fontFamilies.montserrat};
         background-color: #222;
     }

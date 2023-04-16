@@ -1,4 +1,5 @@
 import { Container } from '@/components/UI/Container';
+import { Typography } from '@/components/UI/Typography';
 import {
   StyledInput,
   StyledLocationContainer,
@@ -8,7 +9,6 @@ import {
 // Icons
 import { GoLocation } from 'react-icons/go';
 import { BiSearch } from 'react-icons/bi';
-import { Typography } from '../UI/Typography';
 
 const TopBar = () => {
   return (
@@ -16,11 +16,10 @@ const TopBar = () => {
       width="60vw"
       alignItems="center"
       margin="0 auto"
-      paddingTop="1rem"
     >
       <StyledLocationContainer>
         <GoLocation />
-        <Typography>Nottingham, UK</Typography>
+        <Typography as="span">Nottingham, UK</Typography>
       </StyledLocationContainer>
       <StyledSearchContainer>
         <BiSearch />

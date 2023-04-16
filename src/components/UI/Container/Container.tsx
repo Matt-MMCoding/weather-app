@@ -10,6 +10,7 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
       flexDirection = 'row',
       alignItems,
       justifyContent,
+      gap = '0rem',
       margin,
       marginTop,
       marginRight,
@@ -35,6 +36,7 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
         $flexDirection={flexDirection}
         $alignItems={alignItems}
         $justifyContent={justifyContent}
+        $gap={gap}
         $margin={margin}
         $marginTop={marginTop}
         $marginRight={marginRight}

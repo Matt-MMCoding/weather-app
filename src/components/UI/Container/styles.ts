@@ -8,6 +8,7 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     $flexDirection,
     $alignItems,
     $justifyContent,
+    $gap,
     $margin,
     $marginTop,
     $marginRight,
@@ -26,6 +27,7 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     flex-direction: ${$flexDirection};
     align-items: ${$alignItems};
     justify-content: ${$justifyContent};
+    gap: ${$gap};
     margin: ${$margin};
     margin-top: ${$marginTop};
     margin-right: ${$marginRight};

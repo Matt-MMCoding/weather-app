@@ -11,6 +11,8 @@ import { BiSearchAlt } from 'react-icons/bi';
 import { GeoLocationProps } from '@/types/geoLocation.types';
 import TopBar from '@/components/TopBar/TopBar';
 import { Container } from '@/components/UI/Container';
+import Card from '@/components/Card/Card';
+import { Forecast } from '@/components/Forecast';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
@@ -99,100 +101,14 @@ export default function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <Container>
+      <Container
+        flexDirection="column"
+        padding="2rem"
+        gap="2rem"
+      >
         <TopBar />
+        <Forecast />
       </Container>
-      {/* <main className={`${styles.main}`}>
-        <div className={styles.weather_container}>
-          <form
-            className={styles.weather_form}
-            onSubmit={(e) => handleSearchSubmit(e)}
-          >
-            <div className={styles.form_top_bar}>
-              <span>{currentWeather?.location}</span>
-              <input
-                type="text"
-                ref={searchInputRef}
-                placeholder="Search by City"
-              />
-            </div>
-            {!!searchLocations && (
-              <ul className={styles.search_return_container}>
-                {searchLocations.map((loc, idx) => {
-                  return (
-                    <li
-                      key={idx}
-                      onClick={() =>
-                        handleLocationClick({
-                          lat: loc.latitude,
-                          lon: loc.longitude,
-                        })
-                      }
-                    >
-                      {loc.name}, {loc.countryCode}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </form>
-          <div className={styles.weather_type_container}>
-            <WeatherIcon id={currentWeather?.weatherId} />
-            <span>{currentWeather?.weatherType}</span>
-          </div>
-          <div className={styles.weather_info_container}>
-            <ul className={styles.weather_info}>
-              <li>
-                <BsWind />{' '}
-                <span>
-                  {currentWeather?.windSpeed}
-                  <small>m/s</small>
-                </span>
-              </li>
-              <li>
-                <BsDropletHalf />{' '}
-                <span>
-                  {currentWeather?.humidity}
-                  <small>%</small>
-                </span>
-              </li>
-              <li>
-                <BsClouds />{' '}
-                <span>
-                  {currentWeather?.clouds}
-                  <small>%</small>
-                </span>
-              </li>
-            </ul>
-            <div className={styles.weather_temperature}>
-              {currentWeather?.currentTemp} <pre>°C</pre>
-            </div>
-          </div>
-          <ul className={styles.day_selection_list}>
-            <li className={`${styles.day} ${styles.day_active}`}>
-              <button>Sun</button>
-            </li>
-            <li className={`${styles.day}`}>
-              <button>Mon</button>
-            </li>
-            <li className={`${styles.day}`}>
-              <button>Tue</button>
-            </li>
-            <li className={`${styles.day}`}>
-              <button>Wed</button>
-            </li>
-            <li className={`${styles.day}`}>
-              <button>Thur</button>
-            </li>
-            <li className={`${styles.day}`}>
-              <button>Fri</button>
-            </li>
-            <li className={`${styles.day}`}>
-              <button>Sat</button>
-            </li>
-          </ul>
-        </div>
-      </main> */}
     </>
   );
 }

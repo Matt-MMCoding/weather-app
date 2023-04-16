@@ -3,7 +3,7 @@ export const fontVars = {
     montserrat: "'Montserrat', sans-serif;",
   },
   fontSizes: {
-    bodySmall: 8,
-    h1: 18,
+    body: 1.6,
+    bodySmall: 1,
   },
 } as const;

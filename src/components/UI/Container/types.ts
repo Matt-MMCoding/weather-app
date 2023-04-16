@@ -9,6 +9,7 @@ type ContainerCssProps = Pick<
   | 'flexDirection'
   | 'alignItems'
   | 'justifyContent'
+  | 'gap'
   | 'margin'
   | 'marginTop'
   | 'marginRight'

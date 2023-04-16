@@ -1,3 +1,4 @@
+import { TypographyVariant } from '@/theme';
 import { StyledTransientProps } from '@/types/types';
 import { ElementType, PropsWithChildren } from 'react';
 import { CSSProperties } from 'styled-components';
@@ -7,8 +8,6 @@ type TypographyCssProps = Pick<CSSProperties, 'color'>;
 type TypographyAlignProps = 'left' | 'right' | 'center';
 
 type TypographyTransormProps = 'none' | 'capitalize' | 'uppercase' | 'lowecase';
-
-type TypographyVariant = 'bodySmall' | 'h1';
 
 interface IBaseTypographyProps extends TypographyCssProps {
   align?: TypographyAlignProps;

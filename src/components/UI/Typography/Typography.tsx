@@ -8,7 +8,7 @@ const Typography = forwardRef<HTMLElement, ITypographyProps>(
       color = 'inherit',
       align = 'left',
       textTransform = 'none',
-      variant = 'bodySmall',
+      variant = 'body',
       as,
       children,
       ...rest
