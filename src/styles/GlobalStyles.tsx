@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     html, body {
         height: 100%;
         margin: 0;
-        color: white;
+        color: ${({ theme }) => theme.palette.lightText[0]};
     }
     
     #__next {
@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
     
     body {
         font-size: 1.6rem;
-        font-family: 'Montserrat', sans-serif;
+        font-family: ${({ theme }) => theme.typography.fontFamilies.montserrat};
         background-color: #222;
     }
 `;

@@ -6,8 +6,11 @@ type TypographyCssProps = Pick<CSSProperties, 'color'>;
 
 type TypographyAlignProps = 'left' | 'right' | 'center';
 
+type TypographyTransormProps = 'none' | 'capitalize' | 'uppercase' | 'lowecase';
+
 interface IBaseTypographyProps extends TypographyCssProps {
   align?: TypographyAlignProps;
+  textTransform?: TypographyTransormProps;
 }
 
 export interface ITypographyProps
@@ -18,4 +21,5 @@ export interface ITypographyProps
 export interface IStyledTypographyProps
   extends StyledTransientProps<IBaseTypographyProps> {
   $align: TypographyAlignProps;
+  $textTransform: TypographyTransormProps;
 }

@@ -3,11 +3,22 @@ import { ITypographyProps } from './types';
 import { StyledContainer } from './styles';
 
 const Typography = forwardRef<HTMLElement, ITypographyProps>(
-  ({ color = 'inherit', align = 'left', as, children, ...rest }, ref) => {
+  (
+    {
+      color = 'inherit',
+      align = 'left',
+      textTransform = 'none',
+      as,
+      children,
+      ...rest
+    },
+    ref
+  ) => {
     return (
       <StyledContainer
         $color={color}
         $align={align}
+        $textTransform={textTransform}
         as={as}
         ref={ref}
         {...rest}
