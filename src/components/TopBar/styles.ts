@@ -11,7 +11,6 @@ export const StyledSearchContainer = styled(Container)`
   background-color: #444;
   color: #fff;
   padding: 6px;
-  align-items: center;
 `;
 
 export const StyledInput = styled.input`
@@ -23,4 +22,9 @@ export const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+`;
+
+export const StyledForm = styled.form`
+  display: flex;
+  align-items: center;
 `;

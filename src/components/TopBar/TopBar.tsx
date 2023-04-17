@@ -1,6 +1,7 @@
 import { Container } from '@/components/UI/Container';
 import { Typography } from '@/components/UI/Typography';
 import {
+  StyledForm,
   StyledInput,
   StyledLocationContainer,
   StyledSearchContainer,
@@ -70,14 +71,14 @@ const TopBar = () => {
         <Typography>{currentWeather.location}</Typography>
       </StyledLocationContainer>
       <StyledSearchContainer>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <StyledForm onSubmit={(e) => handleSubmit(e)}>
           <BiSearch />
           <StyledInput
             type="text"
             placeholder="search"
             ref={inputRef}
           />
-        </form>
+        </StyledForm>
       </StyledSearchContainer>
     </Container>
   );
