@@ -7,12 +7,15 @@ import {
   StyledLabelContainer,
 } from './styles';
 import { Typography } from '../UI/Typography';
+import { useWeatherContext } from '@/context/WeatherContext';
 
 const Card: FC<ICardProps> = () => {
+  const { currentWeather } = useWeatherContext();
+
   return (
     <StyledCardContainer>
       <StyledLabelContainer>
-        <Typography variant="h1">Monday</Typography>
+        <Typography>Monday</Typography>
         <Typography
           as="span"
           textTransform="uppercase"
@@ -21,7 +24,7 @@ const Card: FC<ICardProps> = () => {
         </Typography>
       </StyledLabelContainer>
       <StyledInfoContainer>
-        <Typography>16 °C</Typography>
+        <Typography>{currentWeather.currentTemp} °C</Typography>
         <Typography>
           Feels like: <Typography as="span">16 °C</Typography>
         </Typography>

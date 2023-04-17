@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { Lato } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 import { WeatherProps } from '@/types/weather.types';
@@ -13,17 +12,17 @@ import TopBar from '@/components/TopBar/TopBar';
 import { Container } from '@/components/UI/Container';
 import Card from '@/components/Card/Card';
 import { Forecast } from '@/components/Forecast';
-
-const lato = Lato({ subsets: ['latin'], weight: '400' });
+import { useWeatherContext } from '@/context/WeatherContext';
 
 export default function Home() {
   const [search, setSearch] = useState<string | undefined>('');
   const [loc, setLoc] = useState({ lat: 44.34, lon: 10.99 });
-  const [currentWeather, setCurrentWeather] = useState<WeatherProps>();
   const [searchLocations, setSearchLocations] = useState<GeoLocationProps[]>(
     []
   );
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const { updateCurrentWeather } = useWeatherContext();
 
   const handleSearchIconClick = () => {
     searchInputRef.current?.focus();
@@ -61,7 +60,7 @@ export default function Home() {
       const data = await response.json();
 
       if (data) {
-        setCurrentWeather(data);
+        updateCurrentWeather(data);
       }
     };
 
