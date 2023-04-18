@@ -7,7 +7,9 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     $display,
     $flexDirection,
     $alignItems,
+    $alignSelf,
     $justifyContent,
+    $justifySelf,
     $gap,
     $margin,
     $marginTop,
@@ -26,7 +28,9 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     display: ${$display};
     flex-direction: ${$flexDirection};
     align-items: ${$alignItems};
+    align-self: ${$alignSelf};
     justify-content: ${$justifyContent};
+    justify-self: ${$justifySelf};
     gap: ${$gap};
     margin: ${$margin};
     margin-top: ${$marginTop};
@@ -40,5 +44,6 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     padding-left: ${$paddingLeft};
     background-color: ${$backgroundColor};
     color: ${$color};
+    box-sizing: border-box;
   `}
 `;

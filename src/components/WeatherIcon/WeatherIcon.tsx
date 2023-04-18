@@ -10,7 +10,7 @@ import { MdThunderstorm } from 'react-icons/md';
 import { WiSmoke, WiNightClear } from 'react-icons/wi';
 import { GiSandstorm, GiTornado } from 'react-icons/gi';
 
-const WeatherIcon = ({ id }: IWeatherIconProps) => {
+const WeatherIcon = ({ id, size = 1 }: IWeatherIconProps) => {
   const icons = [
     // Thunderstorm
     { range: [200, 202], icon: MdThunderstorm },
@@ -65,7 +65,7 @@ const WeatherIcon = ({ id }: IWeatherIconProps) => {
 
   const Icon = getIcon(id);
 
-  return <Icon />;
+  return <Icon size={`${size}px`} />;
 };
 
 export default WeatherIcon;

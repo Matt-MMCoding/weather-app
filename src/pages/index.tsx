@@ -102,8 +102,10 @@ export default function Home() {
       </Head>
       <Container
         flexDirection="column"
+        margin="0 auto"
         padding="2rem"
         gap="2rem"
+        width="70vw"
       >
         <TopBar />
         <Forecast />

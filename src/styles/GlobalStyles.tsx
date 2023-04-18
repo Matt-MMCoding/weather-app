@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         font-size: ${({ theme }) => theme.typography.fontSizes.body}rem;
         font-family: ${({ theme }) => theme.typography.fontFamilies.montserrat};
-        background-color: #222;
+        background-color: ${({ theme }) => theme.palette.grey[300]};
     }
 `;
 

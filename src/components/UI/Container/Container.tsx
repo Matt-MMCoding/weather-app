@@ -9,7 +9,9 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
       display = 'flex',
       flexDirection = 'row',
       alignItems,
+      alignSelf,
       justifyContent,
+      justifySelf,
       gap = '0rem',
       margin,
       marginTop,
@@ -23,6 +25,7 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
       paddingLeft,
       backgroundColor,
       color,
+      onClick,
       as,
       children,
       ...rest
@@ -35,7 +38,9 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
         $display={display}
         $flexDirection={flexDirection}
         $alignItems={alignItems}
+        $alignSelf={alignSelf}
         $justifyContent={justifyContent}
+        $justifySelf={justifySelf}
         $gap={gap}
         $margin={margin}
         $marginTop={marginTop}
@@ -49,6 +54,7 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
         $paddingLeft={paddingLeft}
         $backgroundColor={backgroundColor}
         $color={color}
+        onClick={onClick}
         as={as}
         ref={ref}
         {...rest}

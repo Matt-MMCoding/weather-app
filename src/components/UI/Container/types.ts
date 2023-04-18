@@ -1,5 +1,5 @@
 import { StyledTransientProps } from '@/types/types';
-import { ElementType, PropsWithChildren } from 'react';
+import { ElementType, MouseEventHandler, PropsWithChildren } from 'react';
 import { CSSProperties } from 'styled-components';
 
 type ContainerCssProps = Pick<
@@ -8,7 +8,9 @@ type ContainerCssProps = Pick<
   | 'display'
   | 'flexDirection'
   | 'alignItems'
+  | 'alignSelf'
   | 'justifyContent'
+  | 'justifySelf'
   | 'gap'
   | 'margin'
   | 'marginTop'
@@ -26,6 +28,7 @@ type ContainerCssProps = Pick<
 
 export interface IContainerProps extends PropsWithChildren<ContainerCssProps> {
   as?: ElementType;
+  onClick?: MouseEventHandler;
 }
 
 export interface IStyledContainerProps
