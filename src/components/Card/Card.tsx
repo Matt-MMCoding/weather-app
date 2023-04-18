@@ -75,39 +75,30 @@ const Card: FC<ICardProps> = ({ active, onClick }) => {
               gap="4px"
             >
               <Typography variant="bodySmall">
-                Feels like:{' '}
+                Wind speed:&nbsp;
                 <Typography
                   as="span"
                   variant="bodySmall"
                 >
-                  16 °C
+                  {currentWeather.windSpeed}: m/s
                 </Typography>
               </Typography>
               <Typography variant="bodySmall">
-                Wind speed:{' '}
+                Humidity:&nbsp;
                 <Typography
                   as="span"
                   variant="bodySmall"
                 >
-                  10 m/s
+                  {currentWeather.humidity}%
                 </Typography>
               </Typography>
               <Typography variant="bodySmall">
-                Humidity:{' '}
+                Clouds:&nbsp;
                 <Typography
                   as="span"
                   variant="bodySmall"
                 >
-                  76%
-                </Typography>
-              </Typography>
-              <Typography variant="bodySmall">
-                Clouds:{' '}
-                <Typography
-                  as="span"
-                  variant="bodySmall"
-                >
-                  76%
+                  {currentWeather.clouds}%
                 </Typography>
               </Typography>
             </Container>
